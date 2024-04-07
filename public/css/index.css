@@ -1,0 +1,360 @@
+*{
+    box-sizing: border-box;
+
+}
+body{
+    margin:0;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+nav {
+    width: 40%;
+}
+.testimg{
+    width: 40%;
+    height: 40%;
+    margin-top: 5%;
+
+}
+#firstsec{
+    background-color: #d1e3ff;
+}
+
+#title {
+    padding-left: 3%;
+    font-family: Mukta;
+    font-size: 40px;
+    font-weight: bold;
+    color: #0355cc;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+ul li {
+    list-style-type: none;
+    font-family: Poppins;
+}
+a:hover,li:hover{
+    color: #0355cc;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+#userintro{
+    display: flex;
+    justify-content: center;
+}
+#userbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 50%;
+    align-items: left;
+}
+#usertext{
+    font-size: 16px;
+    font-family: Poppins;
+    color: black;
+    width:70%
+}
+
+#userbox h1{
+    font-size: 40px;
+    font-family: Merriweather Sans;
+    font-weight: bold;
+    color: #0355cc;
+}
+#thirdsec{
+    background-color: #d1e3ff;
+    display: flex;
+    justify-content: center;
+}
+#gridsection{
+    display: flex;
+    justify-content: center;
+    width:40%;
+    padding-top: 2%;
+    margin:2% 5%;
+    border-radius: 20px; 
+}  
+.grid-container{
+    margin-right: 20%;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 10px;
+    width:80%;
+    height: 80%;
+}
+
+.grid-item {
+    height:150px;
+    width: 220px;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.473);
+backdrop-filter: blur( 3px );
+-webkit-backdrop-filter: blur( 3px );
+border: 1px solid rgba(0, 0, 0);
+
+    
+}
+
+.grid-item:hover {
+    transform: scale(1.2);
+}
+.grid-item img{
+    width: 100%;
+    height: 100%;
+    padding:1px 1px;
+    border-radius: 10px;
+}
+a{
+    text-align: center;
+    color:black;
+    font-family: poppins;
+    text-decoration: none;
+}
+/*FOR BUTTONS*/
+button {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    font-size: 17px;
+    padding: 1em 5em;
+    font-weight: 500;
+    background: #1f2937;
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.6em;
+    cursor: pointer;
+  }
+  
+  .gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 0.6em;
+    margin-top: -0.25em;
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.3)
+    );
+  }
+  
+  .label {
+    position: relative;
+    top: -1px;
+  }
+  
+  .transition {
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-duration: 500ms;
+    background-color: rgba(16, 185, 129, 0.6);
+    border-radius: 9999px;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  button:hover .transition {
+    width: 14em;
+    height: 14em;
+  }
+  
+  button:active {
+    transform: scale(0.97);
+  }
+  
+#workerimg{
+    width: 20%;
+    height: 20%;
+    margin-left: 15%;
+
+}
+/* cards */
+.card {
+    height: 160px;
+    width: 224px;
+    transition: all 0.4s;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: 900;
+  }
+  
+  .card:hover {
+    border-radius: 15px;
+    cursor: pointer;
+    transform: scale(1.05);
+    background: rgba(0, 0, 0, 0.801);
+  }
+  
+  .first-content {
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    border-radius: 15px;
+  }
+  
+  .card:hover .first-content {
+    height: 0px;
+    opacity: 0;
+  }
+  
+  .second-content {
+    height: 0%;
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    color:white;
+    align-items: center;
+    border-radius: 15px;
+    transition: all 0.4s;
+    font-size: 0px;
+    font-family: poppins;
+    transform: rotate(90deg) scale(-1);
+  }
+  
+  .card:hover .second-content {
+    opacity: 1;
+    height: 100%;
+    font-size: 1.8rem;
+    transform: rotate(0deg);
+  }
+/*cards end */
+.testgridimg{
+    height: 160px;
+    width: 224px;
+    border-radius: 5px;
+}  
+.ball {
+    position: relative;
+    bottom: 50px;
+    left: calc(100% - 20px);
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    animation: ball-move8234 3s ease-in-out 1s infinite alternate;
+  }
+  
+  .ball::after {
+    position: absolute;
+    content: '';
+    top: 25px;
+    right: 5px;
+    width: 5px;
+    height: 5px;
+    background: #000;
+    border-radius: 50%;
+  }
+  
+  .bar {
+    width: 200px;
+    height: 12.5px;
+    background: #FFDAAF;
+    border-radius: 30px;
+    transform: rotate(-15deg);
+    animation: up-down6123 3s ease-in-out 1s infinite alternate;
+  }
+  
+  @keyframes up-down6123 {
+    from {
+      transform: rotate(-15deg);
+    }
+  
+    to {
+      transform: rotate(15deg);
+    }
+  }
+  
+  @keyframes ball-move8234 {
+    from {
+      left: calc(100% - 40px);
+      transform: rotate(360deg);
+    }
+  
+    to {
+      left: calc(0% - 20px);
+      transform: rotate(0deg);
+    }
+  }
+#preloader{
+    height: 100vh;
+    width: 100%;
+    background: #212121;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 768px) {
+ 
+  header{
+    display: block;
+  }
+  nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-left:0;
+  }
+  ul{
+    width: 100%;
+  }
+  img{
+    width: 50%;
+    height: 50%;
+  }
+ 
+  #userbox h1{
+    font-size:20px;
+    height: 50%;
+    padding-left: 10%;
+    margin-bottom: none;
+  }
+  #usertext{
+    width: auto;
+    padding-left: 10%;
+    font-size: 12px;
+  }
+  button{
+    font-size: 10px;
+    padding: 0.5em 2em;
+    margin-left: 10%;
+
+  }
+  .label{
+    font-size: 10px;
+  }
+ #secondsection #userintro{
+  gap:15%
+ }
+ #secondsection{
+  padding-bottom: 5%;
+ }
+}

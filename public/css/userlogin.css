@@ -1,0 +1,249 @@
+*{
+    box-sizing: border-box;
+
+}
+body{
+    margin:0;
+    background:url(../images/back.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+nav {
+    width: 40%;
+}
+
+#title {
+  padding-left: 3%;
+  font-family: Mukta;
+  font-size: 40px;
+  font-weight: bold;
+  color: #0355cc;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+ul li {
+    list-style-type: none;
+    font-family: Poppins;
+    color:black;
+}
+a{
+  text-align: center;
+  color:black;
+  font-family: poppins;
+  text-decoration: none;
+}
+li:hover{
+    color: #0355cc;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#login{
+    margin:8% 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+/*form styling*/
+.login {
+    width: 340px;
+    height: 400px;
+    background: rgba( 0, 0, 0, 0.3 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 47px;
+    padding-bottom: 57px;
+    color:#0355cc;
+    border-radius: 17px;
+    padding-bottom: 50px;
+    font-size: 1.3em;
+    font-family: poppins;
+  }
+  
+  .login input[type="text"],
+  .login input[type="password"] {
+    opacity: 1;
+    display: block;
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 13px 18px;
+    margin: 20px 0 0 0;
+    font-size: 0.8em;
+    border-radius: 100px;
+    background: #3c3c3c;
+    color: #fff;
+  }
+  
+  .login input:focus {
+    animation: bounce 1s;
+    -webkit-appearance: none;
+  }
+  
+  .login input[type=submit],
+  .login input[type=button],
+  .h1 {
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 13px;
+    margin: 40px 0 0 0;
+    border-radius: 500px;
+    font-weight: 600;
+    animation: bounce2 1.6s;
+  }
+  
+  .h1 {
+    padding: 0;
+    position: relative;
+    top: -35px;
+    display: block;
+    margin-bottom: -0px;
+    font-size: 1.3em;
+  }
+  
+  .btn {
+    background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+    color: #fff;
+    padding: 16px !important;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(144deg, #1e1e1e , 20%,#1e1e1e 50%,#1e1e1e );
+    color: rgb(255, 255, 255);
+    padding: 16px !important;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  
+  .login input[type=text] {
+    animation: bounce 1s;
+    -webkit-appearance: none;
+  }
+  
+  .login input[type=password] {
+    animation: bounce1 1.3s;
+  }
+  
+  .ui {
+    font-weight: bolder;
+    background: -webkit-linear-gradient(#B563FF, #535EFC, #0EC8EE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border-bottom: 4px solid transparent;
+    border-image: linear-gradient(0.25turn, #535EFC, #0EC8EE, #0EC8EE);
+    border-image-slice: 1;
+    display: inline;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .login {
+      width: 70%;
+      padding: 3em;
+    }
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(-250px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes bounce1 {
+    0% {
+      opacity: 0;
+    }
+  
+    40% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes bounce2 {
+    0% {
+      opacity: 0;
+    }
+  
+    70% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+  }
+  .ball {
+    position: relative;
+    bottom: 50px;
+    left: calc(100% - 20px);
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    animation: ball-move8234 3s ease-in-out 1s infinite alternate;
+  }
+  
+  .ball::after {
+    position: absolute;
+    content: '';
+    top: 25px;
+    right: 5px;
+    width: 5px;
+    height: 5px;
+    background: #000;
+    border-radius: 50%;
+  }
+  
+  .bar {
+    width: 200px;
+    height: 12.5px;
+    background: #FFDAAF;
+    border-radius: 30px;
+    transform: rotate(-15deg);
+    animation: up-down6123 3s ease-in-out 1s infinite alternate;
+  }
+  
+  @keyframes up-down6123 {
+    from {
+      transform: rotate(-15deg);
+    }
+  
+    to {
+      transform: rotate(15deg);
+    }
+  }
+  
+  @keyframes ball-move8234 {
+    from {
+      left: calc(100% - 40px);
+      transform: rotate(360deg);
+    }
+  
+    to {
+      left: calc(0% - 20px);
+      transform: rotate(0deg);
+    }
+  }
+  #preloader{
+    height: 100vh;
+    width: 100%;
+    background: #212121;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

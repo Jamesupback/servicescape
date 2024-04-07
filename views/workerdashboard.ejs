@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/workerdashboard.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&display=swap" rel="stylesheet">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="preloader">
+            <div class="bar">
+                <div class="ball"></div>
+            </div>
+        </div>
+        <header>
+            <div id="title">SERVICESCAPE</div>
+            <nav>
+                <ul>
+                    <a href="/"><li>HOME</li></a>
+          <a href="/#thirdsec"><li>SERVICES</li></a>
+          <a href="/workerdashboard"><li>DASHBOARD</li></a>
+          <a href="/workerprofileedit"><li>PROFILE</li></a>
+          <a href="/about"><li>ABOUT</li></a>
+            <a href="/logout"><li>LOGOUT</li></a>
+                </ul>
+            </nav> 
+        </header>
+    <div id="dashboard">
+        <h1>DASHBOARD</h1>
+        <% books.forEach(function(book,index) { %>
+            <div class="booking <% if (book.bookingstatus == 'done') { %>bookingaccept<% } else if (book.bookingstatus == 'rejected') { %>bookingreject<% } else if (book.bookingstatus == 'pending') { %>bookingpending<% }%> <%if (book.bookingstatus == 'done' && book.paymentstatus == 'paid' && book.reviewstatus == 'done') { %>alldone<% } %>"  id="booking<%= index %>">
+               <div id="detailwrapper">
+                <p><strong>BookingId:</strong> <%= book._id %></p>
+                <p><strong>Name:</strong><%=book.userid.name%><strong>  Email:</strong><%=book.userid.email%><strong>  Phone:</strong><%=book.userid.contact%></p>
+                <p>
+                    <strong>Address:</strong><%=book.userid.address%>
+                </p>
+                <p>
+                    <strong>City:</strong><%=book.userid.city%>
+                    <strong>Pincode:</strong> <%=book.userid.pincode%>
+                </p>
+                <p><strong>Problem:</strong><%= book.problem %></p>
+                <p><strong>Problem description:</strong><%= book.problemStatement %></p>
+                <p class="<% if (book.paymentstatus == 'paid') { %>paypaid<% } else if (book.paymentstatus == 'pending') { %>paypending<% } else if (book.paymentstatus == 'requested') { %>payrequested<% } %>"> <strong>Payment: <%= book.paymentstatus %></strong> </p>
+                <p  class="<% if (book.bookingstatus == 'done') { %>bookaccept<% } else if (book.bookingstatus == 'rejected') { %>bookreject<% } else if (book.bookingstatus == 'pending') { %>bookpending<% } %>"><strong>Booking: <%= book.bookingstatus %></strong> </p>
+                <% const locationMatch = book.locationLink.match(/(\d\.\d+,\d+\.\d+)/g);%>
+                <iframe src="https://maps.google.com/maps?q=<%= locationMatch[0] %>&hl=es;z=14&amp;output=embed"></iframe>
+                <p><strong>Date:</strong> <%= book.date.toLocaleDateString('en-GB') %>  <strong>Time:</strong> <%= book.time %></p>
+                
+                <div>
+                    <% if (book.bookingstatus === 'pending') { %>
+                        <button onclick="accepted('<%= index %>','<%= book._id %>')" id="accept<%= index %>" class="button">
+                            <span class="button_lg" >
+                                <span class="button_sl accept"></span>
+                                <span class="button_text">Accept</span>
+                            </span>
+                        </button>
+                        <button onclick="rejected('<%= index %>','<%= book._id %>')" id="reject<%= index %>" class="button">
+                            <span class="button_lg">
+                                <span class="button_sl"></span>
+                                <span class="button_text">Reject</span>
+                            </span>
+                        </button>
+                        
+                    <% } else { %>
+                        <% if (book.paymentstatus === 'pending') { %>
+                            <button onclick="reqpayment('<%= index %>','<%= book._id %>')" id="requestPaymentButton<%= index %>" class="button">
+                                <span class="button_lg">
+                                    <span class="button_sl reqpay"></span>
+                                    <span class="button_text">Request payment</span>
+                                </span>
+                            </button>
+                        <% } %>
+                        <button onclick="cancel('<%= index %>','<%= book._id %>')" id="cancel<%= index %>" class="button">
+                            <span class="button_lg">
+                                <span class="button_sl"></span>
+                                <span class="button_text">Delete</span>
+                            </span>
+                        </button>
+                    <% } %>
+                </div>
+               </div>
+                
+            </div>
+        <% }); %>
+    </div>
+    <script src="/scripts/workerdashboard.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

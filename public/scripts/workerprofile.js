@@ -1,0 +1,19 @@
+function statuschange(status){
+    if(status=='available'){
+        data={status:'busy'}
+    }
+    else{
+        data={status:'available'}
+    }
+    fetch('/workerstatus',{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+    }).then((response)=>{
+        if(response.status==200){
+            location.reload();
+        }
+    })
+}
