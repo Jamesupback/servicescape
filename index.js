@@ -46,7 +46,7 @@ app.route("/userlogin")
                 res.sendFile(__dirname+'/public/userhome.html');
             }
             else{
-                res.send('failed to login');
+                res.sendFile(__dirname+'/public/loginfail.html');
             }
         })});
 app.route('/workersignup')
@@ -77,7 +77,7 @@ app.route("/workerlogin")
                     });
             }
             else {
-                res.send('failed to login');
+                res.sendFile(__dirname+'/public/loginfail.html');
             }
         });
     });

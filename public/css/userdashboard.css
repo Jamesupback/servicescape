@@ -91,7 +91,6 @@ header {
     font-family: poppins;
     font-weight: 400;
     color: white;
-    text-wrap: nowrap;
 
 }
 #detailwrapper{
@@ -281,7 +280,9 @@ input{
 .payrequested,.payrequested strong{
   color:rgb(252, 246, 155);
 }
-
+.paybtn{
+    background-color:#0355cc;
+}
 .ball {
   position: relative;
   bottom: 50px;
