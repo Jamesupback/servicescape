@@ -216,9 +216,15 @@ app.route("/acceptbooking")
                     res.send('Failed to cancel booking');
                 });
         });
-    app.route("/paynow")
+    app.route("/paydemo")
         .post(async (req, res) => {
             const bookingId = req.body.bookingid;
+            req.session.bookingId = bookingId;
+            res.sendFile(__dirname + '/public/payment.html');
+        });
+    app.route("/paynow")
+        .post(async (req, res) => {
+            const bookingId = req.session.bookingId;
             await Bookings.findOneAndUpdate({ _id: bookingId }, { $set: { paymentstatus: "paid" } })
             .then(() => {
                 res.redirect('/userdashboard');

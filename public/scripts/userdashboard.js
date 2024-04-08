@@ -9,15 +9,15 @@ function cancelBooking(id,index){
     })
     window.location.reload()
 }
-
 function paydemo(id,index){
-    const dashboard=document.getElementById('dashboard')
-    const payment=document.getElementById('payment')
-    const bookingid=document.getElementById('bookingid')
-    dashboard.style.display='none'
-    payment.style.display = 'block';
-    bookingid.value=id
-
+    fetch('/paydemo',{
+        method:'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify({bookingid:id})
+    })
+    window.location.href='/paydemo'
 }
 function paynow(id,index){
     const dashboard=document.getElementById('dashboard')
