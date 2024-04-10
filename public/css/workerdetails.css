@@ -67,7 +67,9 @@ a{
     border-radius: 10px;
     font-family: poppins;
     padding: 10px;
+    min-width: 400px;
     width: auto;
+    height: auto;
     margin:10px;
 }
 #wrapper{
@@ -133,6 +135,7 @@ img{
     width: 350px;
     height: 350px;
     border-radius: 200px;
+    object-fit: cover;
 }
 .button {
     position: relative;
