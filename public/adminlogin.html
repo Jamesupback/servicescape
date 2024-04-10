@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"  href="./css/adminlogin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="preloader">
+        <div class="bar">
+            <div class="ball"></div>
+        </div>
+    </div>
+    <header>
+        <div id="title">SERVICESCAPE</div>
+        <nav>
+            <ul>
+                <a href="/"><li>HOME</li></a>
+                <a href="/#thirdsec"><li>SERVICES</li></a>
+                <a href="/#secondsection"><li>WORKER</li></a>
+                <a href="/about"><li>ABOUT</li></a>
+            </ul>
+        </nav>
+    </header>
+    <h1>SERVICESCAPE ADMIN LOGIN</h1>
+    <div id="#login">
+        <div class="login-box">
+ 
+            <form action="/adminlogin" method="post">
+              <div class="user-box">
+                <input type="text" name="email" required="">
+                <label>Username</label>
+              </div>
+              <div class="user-box">
+                <input type="password" name="password" required="">
+                <label>Password</label>
+              </div><center>
+
+                <button type="submit" class="btn">
+                     GET ME INSIDE
+                    </button>
+                </center>
+            </form>
+          </div>
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

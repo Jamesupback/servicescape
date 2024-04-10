@@ -321,6 +321,45 @@ app.route("/acceptbooking")
         app.get('/favicon.ico', (req, res) => {
             res.status(204);
         });
+    app.route("/adminlogin")
+        .get((req, res) => {
+            res.sendFile(__dirname + '/public/adminlogin.html');
+        })
+        .post(async(req, res) => {
+            const email = req.body.email;
+            const password = req.body.password;
+            if (email == process.env['ADMIN_EMAIL'] && password == process.env['ADMIN_PASSWORD']) {
+                res.sendFile(__dirname + '/public/adminhome.html');
+            } else {
+                res.sendFile(__dirname + '/public/loginfail.html');
+            }
+        });
+    app.route("/adminlistusers")
+        .get(async(req, res) => {
+            await Users.find().then((data) => {
+                res.render('adminlistusers', { data });
+            });
+        });
+    app.route("/adminlistworkers")
+        .get(async(req, res) => {
+            await Workers.find().then((data) => {
+                res.render('adminlistworkers', { data });
+            });
+        });
+    app.route("/admindeleteuser")
+        .get(async(req, res) => {
+            const userid = req.query.id;
+            await Users.findByIdAndDelete(userid).then(() => {
+                res.redirect('/adminlistusers');
+            });
+        });
+    app.route("/admindeleteworker")
+        .get(async(req, res) => {
+            const workerid = req.query.id;
+            await Workers.findByIdAndDelete(workerid).then(() => {
+                res.redirect('/adminlistworkers');
+            });
+        });
     app.listen(3000, () => {
         console.log('Server is running on port 3000');
     });

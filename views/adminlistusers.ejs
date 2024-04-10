@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/scripts/listworkers.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@500&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="./css/listworkers.css">
+</head>
+<style>
+    .record{
+        border-color: aqua;
+    }
+    strong{
+        font-weight: 300;
+    }
+</style>
+<body>
+    <div id="preloader">
+        <div class="bar">
+            <div class="ball"></div>
+        </div>
+    </div>
+    <header>
+        <div id="title">SERVICESCAPE</div>
+        <nav>
+            <ul>
+                <a href="/"><li>HOME</li></a>
+                <a href="/#thirdsec"><li>SERVICES</li></a>
+                <a href="/about"><li>ABOUT</li></a>
+                <a href="/logout"><li>LOGOUT</li></a>
+            </ul>
+        </nav> 
+    </header>
+    <h1>List of all users</h1>
+    <div id="filterbox">
+        <div class="coolinput">
+            <label for="input" class="text">Name:</label>
+            <input type="text" id='namesearch'placeholder="Search name..." name="input" class="input">
+        </div>
+        <div class="coolinput">
+            <label for="input" class="text">City:</label>
+            <input type="text" id='citysearch' placeholder="Search city..." name="input" class="input">
+        </div>
+    </div>
+    <div id="recordholder">
+        <% data.forEach(record => { %>
+            <div class="record <%= record.status === 'busy' ? 'busyrec' : 'availablerec' %>">
+                <h2><strong style="color:aquamarine">Name:</strong> <%= record.name %></h2>
+                <p><strong style="color:aquamarine">City:</strong> <%= record.city %></p>
+                <p><strong style="color:aquamarine">Address:</strong> <%= record.address %></p>
+                <p><strong style="color:aquamarine">Contact number:</strong> <%= record.contact %></p>
+                <p><strong style="color:aquamarine">Pincode:</strong> <%=record.pincode%></p>
+                <button id='bottone1' onclick="window.location.href='/admindeleteuser?id=<%= record.id %>'" style="background-color: rgb(246, 119, 119);">Delete user</button>
+            </div>
+        <% }) %>
+    </div>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'none';
+        });
+    </script>
+</body>
+</html>

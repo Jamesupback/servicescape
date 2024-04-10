@@ -1,7 +1,6 @@
  
         function reqpayment(index,id){
-           
-            alert('Payment requested');
+        
             
             fetch('/requestpayment',{
                 method:'POST',

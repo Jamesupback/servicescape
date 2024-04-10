@@ -4,8 +4,10 @@
         const cityserach = document.getElementById('citysearch');
         const ratingsearch = document.getElementById('ratingsearch');
         const availabilitysearch = document.getElementById('availabilitysearch');
+        const professionsearch = document.getElementById('professionsearch');
 
         namesearch.addEventListener('input', filternames);
+        professionsearch.addEventListener('input', filterprofession);
         cityserach.addEventListener('input', filtercity);
         ratingsearch.addEventListener('change', filterrating);
         availabilitysearch.addEventListener('change', filteravailability);
@@ -26,7 +28,7 @@
 
         function filterrating() {
             const searchValue = ratingsearch.value;
-            const records = document.getElementsByClassName('record');
+     
             console.log(records[0].childNodes[7].innerText.slice(8).split(' ').length)
             Array.from(records).forEach(record => {
                 const rating = record.childNodes[7].innerText.slice(8).split(' ').length;
@@ -54,11 +56,23 @@
         function filternames() {
             const searchValue = namesearch.value.toLowerCase();
             const records = document.getElementsByClassName('record');
-            console.log(records);
             Array.from(records).forEach(record => {
                 const name = record.childNodes[1].innerText.toLowerCase();
 
                 if (name.includes(searchValue)) {
+                    record.style.display = 'block';
+                } else {
+                    record.style.display = 'none';
+                }
+            });
+        }
+        function filterprofession(){
+            const searchValue = professionsearch.value.toLowerCase();
+            const records = document.getElementsByClassName('record');
+            Array.from(records).forEach(record => {
+                const profession = record.childNodes[11].innerText.toLowerCase();
+
+                if (profession.includes(searchValue)) {
                     record.style.display = 'block';
                 } else {
                     record.style.display = 'none';
