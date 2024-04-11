@@ -19,4 +19,4 @@ Once you have installed the project dependencies, you can run the project locall
 ```bash
 npm start
 ```
-To try out the vercel version which is not recommended cause vercel doesn't support ejs as of now, click [here](https://servicescape.vercel.app/).
+To try out the vercel version which is not recommended cause vercel doesn't support ejs as of now which is so sad, click [here](https://servicescape.vercel.app/).
