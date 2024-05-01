@@ -1,16 +1,29 @@
   
     document.addEventListener('DOMContentLoaded', function() {
         const namesearch = document.getElementById('namesearch');
-        const cityserach = document.getElementById('citysearch');
-        const ratingsearch = document.getElementById('ratingsearch');
-        const availabilitysearch = document.getElementById('availabilitysearch');
-        const professionsearch = document.getElementById('professionsearch');
+        if (namesearch) {
+            namesearch.addEventListener('input', filternames);
+        }
 
-        namesearch.addEventListener('input', filternames);
-        professionsearch.addEventListener('input', filterprofession);
-        cityserach.addEventListener('input', filtercity);
-        ratingsearch.addEventListener('change', filterrating);
-        availabilitysearch.addEventListener('change', filteravailability);
+        const cityserach = document.getElementById('citysearch');
+        if (cityserach) {
+            cityserach.addEventListener('input', filtercity);
+        }
+
+        const ratingsearch = document.getElementById('ratingsearch');
+        if (ratingsearch) {
+            ratingsearch.addEventListener('change', filterrating);
+        }
+
+        const availabilitysearch = document.getElementById('availabilitysearch');
+        if (availabilitysearch) {
+            availabilitysearch.addEventListener('change', filteravailability);
+        }
+
+        const professionsearch = document.getElementById('professionsearch');
+        if (professionsearch) {
+            professionsearch.addEventListener('input', filterprofession);
+        }
 
         function filteravailability() {
             const searchValue = availabilitysearch.value;
@@ -28,8 +41,7 @@
 
         function filterrating() {
             const searchValue = ratingsearch.value;
-     
-            console.log(records[0].childNodes[7].innerText.slice(8).split(' ').length)
+            const records = document.getElementsByClassName('record');
             Array.from(records).forEach(record => {
                 const rating = record.childNodes[7].innerText.slice(8).split(' ').length;
 
