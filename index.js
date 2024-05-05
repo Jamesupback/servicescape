@@ -40,15 +40,24 @@ app.route("/userlogin")
     })
     .post(async(req,res)=>{
         const {email,password}=req.body;
-        await Users.findOne({email:email,password:password}).then((data)=>{
+        await Users.findOne({email:email,password:password}).then(async(data)=>{
             if(data){
+                books= await Bookings.find({userid:data.id}).populate('workerid','name email contact profession rating noofratings reviews')
                 req.session.myid=data.id;
-                res.sendFile(__dirname+'/public/userhome.html');
+                res.render('userhome',{books})
+
             }
             else{
                 res.sendFile(__dirname+'/public/loginfail.html');
             }
         })});
+
+app.route("/myhome")
+    .get(async(req,res)=>{
+        const userid=req.session.myid;
+        books= await Bookings.find({userid:userid}).populate('workerid','name email contact profession rating noofratings reviews')
+        res.render('userhome',{books})
+    })
 app.route('/workersignup')
     .get((req, res) => {
         res.sendFile(__dirname + '/public/workersignup.html');
