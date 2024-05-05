@@ -40,12 +40,17 @@
         }
 
         function filterrating() {
+            
             const searchValue = ratingsearch.value;
             const records = document.getElementsByClassName('record');
             Array.from(records).forEach(record => {
-                const rating = record.childNodes[7].innerText.slice(8).split(' ').length;
+                const rating = record.childNodes[7].innerText;
+                const asd=[...rating].filter(e=>e==='★').length;
+                // const noofstars = rating.map(e=>e==='★').length;
 
-                if (rating >= searchValue) {
+                // const newarr=rating.split(' ').length;
+                // console.log(newarr);
+                if (asd >= searchValue) {
                     record.style.display = 'block';
                 } else {
                     record.style.display = 'none';

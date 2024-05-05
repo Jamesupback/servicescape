@@ -71,11 +71,6 @@
             <div class="record <%= record.status === 'busy' ? 'busyrec' : 'availablerec' %>">
                 <h2><strong>Name:</strong> <%= record.name %></h2>
                 <p><strong>City:</strong> <%= record.city %></p>
-                <p><strong>Email:</strong> <%= record.email %></p>
-                <p><strong>Address:</strong> <%= record.address %></p>
-                <p><strong>Contact:</strong> <%= record.contact %></p>
-                <p><strong>Profession:</strong> <%= record.profession %></p>
-                <p><strong>Description:</strong> <%= record.description %></p>
                 <p class="<%= record.status === 'busy' ? 'busy' : 'available' %>">Status: <%= record.status %></p>
                 <div class="rating">
                     <label><strong>Rating:</strong></label>
@@ -83,6 +78,11 @@
                         <span class="star">&#9733;</span>
                     <% } %>
                 </div>
+                <p><strong>Email:</strong> <%= record.email %></p>
+                <p><strong>Address:</strong> <%= record.address %></p>
+                <p><strong>Contact:</strong> <%= record.contact %></p>
+                <p><strong>Profession:</strong> <%= record.profession %></p>
+                <p><strong>Description:</strong> <%= record.description %></p>
                 <br>
          
                     <button id='bottone1' onclick="window.location.href='/admindeleteworker?id=<%= record.id %>'">Delete worker</button>
