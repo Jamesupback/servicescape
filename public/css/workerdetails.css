@@ -61,13 +61,13 @@ a{
   margin: 10px;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 .record {
     background-color: #f2f2f2eb;
     border-radius: 10px;
     font-family: poppins;
     padding: 10px;
-    min-width: 400px;
     width: auto;
     height: auto;
     margin:10px;

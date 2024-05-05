@@ -21,7 +21,11 @@
                 <ul>
                     <a href="/"><li>HOME</li></a>
           <a href="/#thirdsec"><li>SERVICES</li></a>
-          <a href="/workerdashboard"><li>DASHBOARD</li></a>
+          <% if (books.length !== 0) { %>
+            <a href="/workerdashboard"><li style="list-style: disc;color:rgb(253, 203, 4)">DASHBOARD</li></a>
+        <% } else { %>
+            <a href="/workerdashboard"><li>DASHBOARD</li></a>
+        <% } %>
           <a href="/workerprofileedit"><li>PROFILE</li></a>
           <a href="/about"><li>ABOUT</li></a>
             <a href="/logout"><li>LOGOUT</li></a>
@@ -34,7 +38,8 @@
             <div class="booking <% if (book.bookingstatus == 'done') { %>bookingaccept<% } else if (book.bookingstatus == 'rejected') { %>bookingreject<% } else if (book.bookingstatus == 'pending') { %>bookingpending<% }%> <%if (book.bookingstatus == 'done' && book.paymentstatus == 'paid' && book.reviewstatus == 'done') { %>alldone<% } %>"  id="booking<%= index %>">
                <div id="detailwrapper">
                 <p><strong>BookingId:</strong> <%= book._id %></p>
-                <p><strong>Name:</strong><%=book.userid.name%><strong>  Email:</strong><%=book.userid.email%><strong>  Phone:</strong><%=book.userid.contact%></p>
+                <p><strong>Name:</strong><%=book.userid.name%><strong>  Email:</strong><%=book.userid.email%></p>
+                <p><strong>Contact:</strong><%=book.userid.contact%></p>
                 <p>
                     <strong>Address:</strong><%=book.userid.address%>
                 </p>

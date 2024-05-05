@@ -118,6 +118,8 @@ app.route("/bookings")
 
 app.route("/bookconfirm")
     .post(async (req, res) => {
+        let username,useremail;
+        let workername,workeremail,workercontact;
         const workerid = req.session.workerid;
         const userid = req.session.myid;
         const date = req.body.date;
@@ -126,9 +128,57 @@ app.route("/bookconfirm")
         const problem = req.body.problem;
         const problemStatement = req.body.problemStatement;
         const booking = new Bookings({ workerid, userid, date, time, locationLink, problem, problemStatement });
-        await booking.save().then((data) => {
-            res.redirect('/userdashboard');
+
+        await Users.findById(userid).then((data) => {
+            username = data.name;
+            useremail = data.email;
         });
+        await Workers.findById(workerid).then((data) => {
+            workeremail = data.email;
+            workername = data.name;
+            workercontact = data.contact;
+        })
+        let API_KEY = process.env.API_KEY
+        let DOMAIN = process.env.DOMAIN;
+        const mailgun = require('mailgun-js')
+	    ({ apiKey: API_KEY, domain: DOMAIN });
+
+        sendMail = async function (sender_email, receiver_email,
+	    email_subject, email_body) {
+
+	    const data = {
+		"from": sender_email,
+		"to": receiver_email,
+		"subject": email_subject,
+		"html": email_body
+	    };
+
+	    await mailgun.messages().send(data, (error, body) => {
+		    if (error) console.log(error)
+		    else console.log(body);
+	    });
+        }
+
+        let sender_email = 'admin@servicescape.com'
+        let receiver_email = useremail
+        let email_subject = 'Booking Confirmation'
+        let email_body = `<h2>Dear ${username},</h2><br>
+        <h3> Your booking has been confirmed for ${date} at ${time} to assist with </h3>
+        <h3>problem: ${problem}.</h3>
+        <h3>description:${problemStatement}</h3>
+        <h3>you will be assisted by ${workername} you can conatact him on ${workeremail} , ${workercontact}</h3>
+        <h3>Thank you for choosing our services.</h3>
+        <h3>Your's truly , mahesh dulley</h3>
+        <h3>Servicescape</h3>`
+
+        // User-defined function to send email
+        await sendMail(sender_email, receiver_email,
+	        email_subject, email_body)
+
+
+            await booking.save().then((data) => {
+                res.redirect('/userdashboard');
+            });
     });
 
 app.route("/userdashboard")
@@ -136,7 +186,7 @@ app.route("/userdashboard")
         const userid = req.session.myid;
         await Bookings.find({ userid: userid })
             .populate('workerid', 'name email contact profession')
-            .then((data) => {
+            .then((data) => {   
                 res.render('userdashboard', { data });
             });
     });

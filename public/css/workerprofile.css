@@ -200,8 +200,12 @@ img{
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin: 10px;
+    width: 100%;
     justify-content: center;
     align-items: center;
+}
+.record{
+  width: auto;
 }
 .star{
     font-size: 25px;
