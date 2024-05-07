@@ -90,6 +90,18 @@ app.route("/workerlogin")
             }
         });
     });
+app.route("/workerhome")
+    .get(async(req,res)=>{
+        const workid=req.session.workmyid;
+        await Workers.findById(workid).then(async(data) => {
+         
+                await Bookings.find({ workerid: data.id, bookingstatus: { $in: ["pending", "done"] } })
+                    .populate('userid', 'name email address city pincode contact')
+                    .then((books) => {
+                        res.render('workerprofile', { books, data });
+                    });
+                });
+    })
 app.route('/workerdashboard')
     .get(async (req, res) => {
         const workerid = req.session.workmyid;
