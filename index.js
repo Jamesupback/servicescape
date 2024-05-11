@@ -265,9 +265,15 @@ app.route("/acceptbooking")
     app.route("/requestpayment")
         .post(async (req, res) => {
             const bookingId = req.body.bookingid;
-            await Bookings.findOneAndUpdate({ _id: bookingId }, { $set: { paymentstatus: "requested" } })
-                .then(() => {
-                    res.send('Payment requested');
+            const payamount = req.body.payamount;
+            await Bookings.findOneAndUpdate({ _id: bookingId }, { $set: { paymentstatus: "requested", baseprice:payamount } })
+                .then(async () => {
+                    const workerid = req.session.workmyid;
+                    await Bookings.find({ workerid: workerid, bookingstatus: { $in: ["pending", "done"] } })
+                        .populate('userid', 'name email address city pincode contact')
+                        .then((books) => {
+                            res.render('workerdashboard', { books });
+                        });
                 })
                 .catch((error) => {
                     console.log(error);

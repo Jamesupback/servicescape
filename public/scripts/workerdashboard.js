@@ -1,14 +1,6 @@
  
-        function reqpayment(index,id){
-        
-            
-            fetch('/requestpayment',{
-                method:'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body:JSON.stringify({bookingid:id})
-            })
+        function reqpayment(){
+            console.log('Payment Requested')
             window.location.reload()
         }
 

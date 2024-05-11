@@ -72,12 +72,16 @@
                         
                     <% } else { %>
                         <% if (book.paymentstatus === 'pending') { %>
-                            <button onclick="reqpayment('<%= index %>','<%= book._id %>')" id="requestPaymentButton<%= index %>" class="button">
+                            <form action="/requestpayment" method="post">
+                                <p><Strong>Enter amount:</Strong><input type="text" name="payamount" placeholder="Enter amount"></p>
+                                <input type="hidden" name="bookingid" value="<%= book._id %>">
+                                <button type="submit"class='button' onclick="reqpayment()" >
                                 <span class="button_lg">
                                     <span class="button_sl reqpay"></span>
                                     <span class="button_text">Request payment</span>
                                 </span>
                             </button>
+                            </form>
                         <% } %>
                         <button onclick="cancel('<%= index %>','<%= book._id %>')" id="cancel<%= index %>" class="button">
                             <span class="button_lg">

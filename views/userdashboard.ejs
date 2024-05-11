@@ -42,7 +42,7 @@
                   <p><strong>Problem:</strong><%= booking.problem %></p>
                     <p class="<% if (booking.paymentstatus == 'paid') { %>paypaid<% } else if (booking.paymentstatus == 'pending') { %>paypending<% } else if (booking.paymentstatus == 'requested') { %>payrequested<% } %>"> <strong>Payment: <%= booking.paymentstatus %></strong> </p>
                   <p  class="<% if (booking.bookingstatus == 'done') { %>bookaccept<% } else if (booking.bookingstatus == 'rejected') { %>bookreject<% } else if (booking.bookingstatus == 'pending') { %>bookpending<% } %>"><strong>Booking Status:  <%= booking.bookingstatus %></strong></p>
-                  <p><strong>Amount:</strong> <%= booking.baseprice %></p>
+                 
                 
                   <% if (booking.paymentstatus === 'pending') { %>
                   <button onclick="cancelBooking('<%= booking._id %>','<%= index %>')" class="button">
@@ -55,6 +55,7 @@
                   <% if (booking.paymentstatus === 'requested' && booking.bookingstatus === 'done') { %>
                   <form action="/paydemo" method="post">
                       <input type="hidden" name="bookingid" value="<%= booking._id %>">
+                      <p><strong>Amount:</strong> <%= booking.baseprice %></p>
                       <button type="submit" class="button">
                           <span class="button_lg ">
                               <span class="button_sl paybtn" ></span>
