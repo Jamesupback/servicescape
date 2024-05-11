@@ -1,6 +1,8 @@
 # Servicescape
 You can access the live demo of the project [here](https://32f90179-f034-4b2c-9b59-fd59a9a5e347-00-37ax2ouq9aqd3.kirk.replit.dev/).
 
+you can access the permanent link of the project [here](https://servicescape.onrender.com)
+
 This project aims to [provide a platform for freelancers to connect with people in need of a variety of home services. we aim to provide provisions for 12 kinds of services].
 
 
